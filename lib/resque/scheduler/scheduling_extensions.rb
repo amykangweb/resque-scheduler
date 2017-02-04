@@ -129,6 +129,7 @@ module Resque
         prepared_hash = {}
         schedule_hash.each do |name, job_spec|
           job_spec = job_spec.dup
+          next if job_spec.is_a?(String)
           unless job_spec.key?('class') || job_spec.key?(:class)
             job_spec['class'] = name
           end
