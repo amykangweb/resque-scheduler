@@ -129,10 +129,8 @@ module Resque
         prepared_hash = {}
         schedule_hash.each do |name, job_spec|
           job_spec = job_spec.dup
-          if job_spec.is_a?(String) && job_spec == "Updates the server configs that are stored locally. Same as 'rake bigbluebutton_rails:server_configs:update'."
-            puts name
-            puts job_spec
-          end
+          puts name
+          puts job_spec
           next if job_spec.is_a?(String)
           unless job_spec.key?('class') || job_spec.key?(:class)
             job_spec['class'] = name
